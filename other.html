@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김가을 포트폴리오</title>
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:image" content="https://autumn00926.dothome.co.kr/portfolio!/images/og_main.jpg">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/other.css">
+
+</head>
+
+<body>
+<img src="https://autumn00926.dothome.co.kr/portfolio!/og_main.jpg" alt="" style="display:none;">
+  <!-- HEADER 고정됨 -->
+  <div id="header">
+    <div class="center">
+      <a href="index.html"><img class="logo" src="KGE.svg"></a>
+    </div>
+  </div>
+  <div id="center">
+    <!-- ===== HERO SECTION ===== -->
+    <section class="other-hero">
+      <h1>OTHER WORK</h1>
+      <p>브랜딩, 그래픽, 캐릭터, UX 등 웹 외의 <br class="on"> 다양한 디자인 작업을 정리한 아카이브입니다.<br>
+        제가 만든 브랜드 이미지와 <br class="on"> 시각 언어를 경험해보세요.</p>
+
+      <!-- 큰 대표 이미지 -->
+      <img class="icon" src="images/고양이 아이콘.png" alt="Other Work Desktop Mockup">
+    </section>
+
+    <!-- ===== CATEGORY TABS ===== -->
+    <div class="tabs">
+      <button class="tab-btn active" data-filter="all">ALL</button>
+      <button class="tab-btn" data-filter="branding">BRANDING / GRAPHIC</button>
+      <button class="tab-btn" data-filter="character">CHARACTER IDENTITY</button>
+      <button class="tab-btn" data-filter="ux">UX / UI</button>
+    </div>
+
+    <!-- ===== CARD GRID ===== -->
+    <section class="card-grid">
+
+      <!-- Branding -->
+      <div class="card" data-type="branding" onclick="location.href='nhcard.html'">
+        <img src="images/농협카드logo.png" alt="">
+        <div class="title">NH Card Branding</div>
+        <div class="desc">컬러 시스템 기반 패키지 브랜딩<br>/기여도:100%</div>
+      </div>
+
+      <div class="card" data-type="branding" onclick="location.href='infographic.html'">
+        <img src="images/인포그래픽logo.png" alt="">
+        <div class="title">Infographic Design</div>
+        <div class="desc">문서 정보를 시각 구조로 정리<br>/기여도:100%</div>
+      </div>
+
+      <!-- Character -->
+      <div class="card" data-type="character" onclick="location.href='homad.html'">
+        <img src="images/호마드logo.png" alt="">
+        <div class="title">HOMAD Character</div>
+        <div class="desc">브랜드 콘셉트 기반 캐릭터 설계<br>/기여도:25%</div>
+      </div>
+
+      <div class="card" data-type="character" onclick="location.href='willy.html'">
+        <img src="images/윌리업비logo.png" alt="">
+        <div class="title">Willy & Upbee Identity</div>
+        <div class="desc">취창업센터 공식 캐릭터 브랜딩<br>/기여도:100%</div>
+      </div>
+
+      <div class="card" data-type="character" onclick="location.href='duriland.html'">
+        <img src="images/두리랜드logo.png" alt="">
+        <div class="title">두리랜드 Rebranding</div>
+        <div class="desc">캐릭터 테마 리브랜딩 프로젝트<br>/기여도:25%</div>
+      </div>
+
+      <!-- UX/UI -->
+      <div class="card" data-type="ux" onclick="location.href='nailbolle.html'">
+        <img src="images/네일볼래logo.png" alt="">
+        <div class="title">네일볼래 UX/UI</div>
+        <div class="desc">예약 경험 개선 중심의 앱 디자인<br>/기여도:100%</div>
+      </div>
+  </div>
+
+  </section>
+  <script>
+
+    const tabs = document.querySelectorAll(".tab-btn");
+    const cards = document.querySelectorAll(".card");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const filter = tab.dataset.filter;
+
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        cards.forEach(card => {
+          if (filter === "all" || card.dataset.type === filter) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
