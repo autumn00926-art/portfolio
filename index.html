@@ -36,40 +36,6 @@
         </ul>
       </nav>
 
-<<<<<<< HEAD
-      <div class="m-gnb">
-        <ul class="menu">
-          <li>
-            <div class="move-btn" data-target=".section-1">Main</div>
-          </li>
-          <li>
-            <div class="move-btn" data-target=".profile-title">Profile</div>
-          </li>
-
-          <li>
-            <div>Portfolio</div>
-            <ul class="sub">
-              <li class=""><a href="#">여수 홍보 포스터</a></li>
-              <li><a href="#">heenytsuki</a></li>
-              <li><a href="#">MOTOZONE</a></li>
-            </ul>
-          </li>
-          <li>
-            <div class="move-btn" data-target="#OtherWork">Other Work</div>
-          </li>
-          <li>
-            <div class="move-btn" data-target="#Contact">Contact</div>
-          </li>
-
-
-          <div class="line111">
-
-          </div>
-
-        </ul>
-      </div>
-=======
->>>>>>> 3e2461bba30939aadbb7adeb4cca30eba130eb7d
     </div>
   </div>
   <div id="container">
@@ -149,7 +115,7 @@
               <span>의정부 2023.07 <br class="on"> ~2025.02</span>
             </div>
 
-            
+
           </div>
 
           <!-- ⭐ Capability & Skills -->
@@ -397,90 +363,90 @@
       </div>
     </div>
   </div>
- <script>
-  // ============================
-  // PC 메뉴 hover / active
-  // ============================
+  <script>
+    // ============================
+    // PC 메뉴 hover / active
+    // ============================
 
-  const menuItems = document.querySelectorAll("#gnb > li");
+    const menuItems = document.querySelectorAll("#gnb > li");
 
-  menuItems.forEach(item => {
-    item.addEventListener("mouseenter", () => {
-      item.classList.add("hovering");
+    menuItems.forEach(item => {
+      item.addEventListener("mouseenter", () => {
+        item.classList.add("hovering");
+      });
+
+      item.addEventListener("mouseleave", () => {
+        item.classList.remove("hovering");
+      });
+
+      item.addEventListener("click", () => {
+        menuItems.forEach(li => li.classList.remove("active"));
+        item.classList.add("active");
+      });
     });
 
-    item.addEventListener("mouseleave", () => {
-      item.classList.remove("hovering");
+
+    // ============================
+    // PC 메뉴 클릭 → 스크롤 이동
+    // ============================
+
+    const moveBtns = document.querySelectorAll(".move-btn");
+
+    moveBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-target");
+        const section = document.querySelector(target);
+
+        if (section) {
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
     });
 
-    item.addEventListener("click", () => {
-      menuItems.forEach(li => li.classList.remove("active"));
-      item.classList.add("active");
+
+    // ============================
+    // reveal animation (스크롤)
+    // ============================
+
+    const revealItems = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      revealItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (itemTop < windowHeight * 0.9) {
+          item.classList.add("show");
+        } else {
+          item.classList.remove("show");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+
+    // ============================
+    // Portfolio 탭 기능 (PC)
+    // ============================
+
+    const tabBtns = document.querySelectorAll(".portfolio-tabs .tab");
+    const portBoxes = document.querySelectorAll(".port-box");
+
+    tabBtns.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        tabBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        portBoxes.forEach(box => box.classList.remove("show"));
+        portBoxes[index].classList.add("show");
+      });
     });
-  });
-
-
-  // ============================
-  // PC 메뉴 클릭 → 스크롤 이동
-  // ============================
-
-  const moveBtns = document.querySelectorAll(".move-btn");
-
-  moveBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const target = btn.getAttribute("data-target");
-      const section = document.querySelector(target);
-
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    });
-  });
-
-
-  // ============================
-  // reveal animation (스크롤)
-  // ============================
-
-  const revealItems = document.querySelectorAll(".reveal");
-
-  function revealOnScroll() {
-    revealItems.forEach(item => {
-      const itemTop = item.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-
-      if (itemTop < windowHeight * 0.9) {
-        item.classList.add("show");
-      } else {
-        item.classList.remove("show");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  window.addEventListener("load", revealOnScroll);
-
-
-  // ============================
-  // Portfolio 탭 기능 (PC)
-  // ============================
-
-  const tabBtns = document.querySelectorAll(".portfolio-tabs .tab");
-  const portBoxes = document.querySelectorAll(".port-box");
-
-  tabBtns.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      tabBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      portBoxes.forEach(box => box.classList.remove("show"));
-      portBoxes[index].classList.add("show");
-    });
-  });
-</script>
+  </script>
 
 
 </body>
